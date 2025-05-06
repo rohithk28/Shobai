@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -7,34 +7,36 @@ import {
   Title,
   Tooltip,
   Legend,
-} from 'chart.js';
-import { Bar } from 'react-chartjs-2';
+} from "chart.js";
+import { Bar } from "react-chartjs-2";
 
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
-
-export const options = {
+const options = {
   responsive: true,
   plugins: {
     legend: {
-      position: 'top',
+      position: "top",
     },
     title: {
       display: true,
-      text: 'Holdings',
+      text: "Holdings",
     },
   },
 };
 
+const VerticalGraph = ({ data }) => {
+  const chartRef = useRef(null);
 
+  useEffect(() => {
+    return () => {
+      if (chartRef.current) {
+        chartRef.current.destroy(); // Cleanup the chart instance on unmount
+      }
+    };
+  }, []);
 
-export function VerticalGraph({data}) {
-  return <Bar options={options} data={data} />;
-}
+  return <Bar ref={chartRef} options={options} data={data} />;
+};
+
+export default VerticalGraph;

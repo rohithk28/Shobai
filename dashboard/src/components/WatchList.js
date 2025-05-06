@@ -57,7 +57,6 @@ const WatchList=()=>{
       <ul className='list'>
         {watchList.map((stock,index)=>{
           return <WatchListItem stock={stock} key={index}/>;
-          return <p>{stock.name}</p>;
         })}
       </ul>
       <Doughnut data={data}/>
@@ -125,7 +124,8 @@ const WatchListActions=({uid})=>{
       <Tooltip
         title="More"
         placement="top" 
-        arrow TransitionComponent={Grow}
+        arrow 
+        TransitionComponent={Grow}
         >
        <button className='action'> 
           <MoreHoriz className='icon'/>
