@@ -10,7 +10,7 @@ import {
 } from "@mui/icons-material";
 
 import {watchList} from "../data/data";
-import { Doughnut } from 'react-chartjs-2';
+// import { Doughnut } from 'react-chartjs-2';
 
 const WatchList=()=>{
   const data={
@@ -59,7 +59,7 @@ const WatchList=()=>{
           return <WatchListItem stock={stock} key={index}/>;
         })}
       </ul>
-      <Doughnut data={data}/>
+      {/* <Doughnut data={data}/> */}
     </div>
   );
 };
@@ -133,5 +133,4 @@ const WatchListActions=({uid})=>{
       </Tooltip>
     </span>
   </span>;
-  
 }

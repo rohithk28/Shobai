@@ -37,6 +37,7 @@ const DoughnutChart = () => {
   useEffect(() => {
     return () => {
       if (chartRef.current) {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         chartRef.current.destroy(); // Cleanup chart instance on unmount
       }
     };
